@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Ekta ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --rose-dark: #8b1538;
+            --rose-medium: #c41e3a;
+            --rose-light: #ff6b9d;
+            --cream: #fff5f7;
+            --gold: #d4af37;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #1a0a0f 0%, #3d1e28 50%, #1a0a0f 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background hearts */
+        .heart-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0;
+            animation: floatUp 15s infinite;
+            filter: blur(1px);
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Main container */
+        .container {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Title styling */
+        .title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 300;
+            color: var(--cream);
+            text-align: center;
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateY(-30px);
+            animation: fadeInDown 1.2s ease-out 0.3s forwards;
+            letter-spacing: 0.05em;
+        }
+
+        .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            font-weight: 400;
+            color: var(--rose-light);
+            text-align: center;
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeInDown 1.2s ease-out 0.6s forwards;
+            letter-spacing: 0.15em;
+        }
+
+        /* Letter card */
+        .letter-card {
+            background: rgba(255, 245, 247, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 50px 40px;
+            max-width: 650px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(196, 30, 58, 0.3),
+                        0 0 0 1px rgba(212, 175, 55, 0.2);
+            position: relative;
+            opacity: 0;
+            transform: scale(0.9) translateY(30px);
+            animation: scaleIn 1s ease-out 0.9s forwards;
+        }
+
+        .letter-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--rose-medium), var(--gold), var(--rose-light));
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0;
+            animation: borderGlow 3s ease-in-out 2s infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        .letter-ornament {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            10%, 30% {
+                transform: scale(1.1);
+            }
+            20%, 40% {
+                transform: scale(1);
+            }
+        }
+
+        .letter-content {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            line-height: 1.9;
+            color: var(--rose-dark);
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .letter-content p {
+            margin-bottom: 15px;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .letter-content p:nth-child(1) { animation: slideInLeft 0.8s ease-out 1.5s forwards; }
+        .letter-content p:nth-child(2) { animation: slideInLeft 0.8s ease-out 1.7s forwards; }
+        .letter-content p:nth-child(3) { animation: slideInLeft 0.8s ease-out 1.9s forwards; }
+        .letter-content p:nth-child(4) { animation: slideInLeft 0.8s ease-out 2.1s forwards; }
+        .letter-content p:nth-child(5) { animation: slideInLeft 0.8s ease-out 2.3s forwards; }
+
+        .signature {
+            margin-top: 30px;
+            text-align: right;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.3rem, 4vw, 1.8rem);
+            font-style: italic;
+            color: var(--rose-medium);
+            opacity: 0;
+            animation: fadeIn 1s ease-out 2.8s forwards;
+        }
+
+        /* Rose decoration */
+        .rose-decoration {
+            position: absolute;
+            font-size: 4rem;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .rose-decoration.top-left {
+            top: -20px;
+            left: -20px;
+            transform: rotate(-25deg);
+        }
+
+        .rose-decoration.bottom-right {
+            bottom: -20px;
+            right: -20px;
+            transform: rotate(25deg);
+        }
+
+        /* Sparkles */
+        .sparkle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            animation: sparkleAnim 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkleAnim {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Mobile optimization */
+        @media (max-width: 768px) {
+            .letter-card {
+                padding: 40px 30px;
+                margin: 20px;
+            }
+
+            .rose-decoration {
+                font-size: 3rem;
+            }
+
+            .floating-heart {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .letter-card {
+                padding: 30px 25px;
+            }
+
+            .title {
+                margin-bottom: 5px;
+            }
+
+            .subtitle {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated background hearts -->
+    <div class="heart-bg" id="heartBg"></div>
+
+    <!-- Sparkles -->
+    <div id="sparkles"></div>
+
+    <!-- Main content -->
+    <div class="container">
+        <h1 class="title">Happy Valentine's Day</h1>
+        <h2 class="subtitle">Ekta (Meri Malkin)</h2>
+        
+        <div class="letter-card">
+            <div class="rose-decoration top-left">🌹</div>
+            <div class="rose-decoration bottom-right">🌹</div>
+            
+            <div class="letter-ornament">💝</div>
+            
+            <div class="letter-content">
+                <p>Every moment with you feels like a beautiful dream I never want to wake from.</p>
+                <p>Your smile lights up my darkest days and your laughter is my favorite melody.</p>
+                <p>In a world full of temporary things, you are my forever constant.</p>
+                <p>Thank you for being the reason my heart knows what true happiness feels like.</p>
+                <p>Today and always, you are my greatest Valentine.</p>
+            </div>
+            
+            <div class="signature">With all my love (Apka Gulam)💕</div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts
+        const heartBg = document.getElementById('heartBg');
+        const heartSymbols = ['❤️', '💕', '💖', '💗', '💝'];
+        
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            heartBg.appendChild(heart);
+            
+            // Remove after animation
+            setTimeout(() => {
+                heart.remove();
+            }, 15000);
+        }
+
+        // Create initial hearts
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createFloatingHeart, i * 500);
+        }
+
+        // Continue creating hearts
+        setInterval(createFloatingHeart, 1000);
+
+        // Create sparkles
+        const sparklesContainer = document.getElementById('sparkles');
+        
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * window.innerWidth + 'px';
+            sparkle.style.top = Math.random() * window.innerHeight + 'px';
+            sparkle.style.animationDelay = Math.random() * 2 + 's';
+            sparklesContainer.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 2000);
+        }
+
+        // Create sparkles periodically
+        setInterval(createSparkle, 300);
+
+        // Add touch interaction for mobile
+        const letterCard = document.querySelector('.letter-card');
+        let touchStartY = 0;
+
+        letterCard.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        letterCard.addEventListener('touchmove', (e) => {
+            const touchY = e.touches[0].clientY;
+            const deltaY = touchStartY - touchY;
+            
+            // Subtle parallax effect on scroll
+            if (Math.abs(deltaY) > 5) {
+                letterCard.style.transform = `translateY(${-deltaY * 0.05}px)`;
+            }
+        }, { passive: true });
+
+        letterCard.addEventListener('touchend', () => {
+            letterCard.style.transform = '';
+        });
+    </script>
+</body>
+</html>
